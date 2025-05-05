@@ -1,0 +1,156 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  background: linear-gradient(to top right, #d4e2e7, #3f54cc);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: #070110;
+  
+}
+
+.container {
+  transform: translateY(-40px); /* поднимает вверх на 40px */
+}
+
+#birthdayText {
+  margin-bottom: 20px;
+  font-size: 2em;
+  animation: appearText 2s ease forwards;
+  opacity: 0;
+  transform: translateY(-40px); /* поднимает вверх на 40px */
+}
+
+@keyframes appearText {
+  to {
+    opacity: 1;
+  }
+}
+
+
+.container {
+  text-align: center;
+  position: relative; /* ОБЯЗАТЕЛЬНО, чтобы #message позиционировался от него */
+}
+
+#startButton {
+  background: #270861;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s;
+}
+#startButton:hover {
+  background-color: #01011c;
+}
+
+.hidden {
+  display: none;
+}
+
+.bill {
+  position: absolute;
+  width: 100px; /* Размер купюры */
+  height: 100px; /* Высота купюры */
+  background-image: url('11.png'); /* Путь к изображению купюры */
+  background-size: cover;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0.7;
+  }
+}
+
+#message {
+  position: absolute; /* позиционируем относительно родителя .container */
+  width: auto;
+  max-width: 90vw; /* ограничиваем ширину сообщения */
+  top: 100%; /* можно изменить, например top: 70% — зависит от желаемого положения */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  white-space: nowrap; /* запрет на перенос строк */
+  overflow: hidden; /* чтобы не вылезал за границы */
+  text-overflow: ellipsis; /* троеточие, если не вмещается */
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  text-align: center;
+  pointer-events: none; /* опционально */
+  animation: appearText 2s ease forwards;
+}
+
+@keyframes appearText {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#message.visible {
+  opacity: 1;
+}
+
+
+/* Cake */
+#pixel-cake {
+  display: grid;
+  grid-template-columns: repeat(32, 10px);
+  grid-auto-rows: 10px;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(0);
+  animation: fadeIn 2s ease forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Colors */
+.pixel {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin: 0;
+}
+.yellow { background-color: #f7e7a5; }
+.brown { background-color: #6f1a10; }
+.pink { background-color: #f2a8c9; }
+.pink-light { background-color: #f3c1d9; }
+.pink-dark { background-color: #dc82a5; }
+.red-dark { background-color: #c62415e7; }
+.red { background-color: #e73224; }
+.black { background-color: #000000; }
+.white { background-color: #ffffff; }
+.transparent { background-color: transparent; }
+
+/*Flame animation*/
+.flame {
+  animation: flicker 0.3s infinite alternate;
+}
+
+@keyframes flicker {
+  0% { transform: scale(1); background: #f7e7a5; }
+  50% { transform: scale(1.2); background: gold; }
+  100% { transform: scale(1); background: rgb(255, 115, 0); }
+}
